@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffret de lettres pour Alicia</title>
+  <meta name="description" content="Un coffret romantique en français pour écrire, relire et conserver vos lettres pour Alicia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --text-hero: clamp(3rem, 0.5rem + 7vw, 7rem);
+
+      --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+
+      --color-bg: #f8f2ee;
+      --color-surface: #fffaf7;
+      --color-surface-2: #fffdfb;
+      --color-surface-offset: #f2e8e1;
+      --color-surface-dynamic: #eaded5;
+      --color-border: rgba(73, 47, 43, 0.12);
+      --color-divider: rgba(73, 47, 43, 0.08);
+      --color-text: #2d1c1d;
+      --color-text-muted: #71595b;
+      --color-text-faint: #b39a9d;
+      --color-text-inverse: #fffaf7;
+      --color-primary: #a03f68;
+      --color-primary-hover: #842f54;
+      --color-primary-active: #62203d;
+      --color-primary-soft: rgba(160, 63, 104, 0.12);
+      --color-secondary: #d08a66;
+      --shadow-sm: 0 2px 12px rgba(71, 42, 43, 0.06);
+      --shadow-md: 0 14px 34px rgba(71, 42, 43, 0.11);
+      --shadow-lg: 0 28px 78px rgba(71, 42, 43, 0.18);
+      --radius-sm: .55rem; --radius-md: .9rem; --radius-lg: 1.25rem; --radius-xl: 1.85rem; --radius-full: 9999px;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --transition: 180ms cubic-bezier(.16,1,.3,1);
+      --content: min(1180px, calc(100vw - 2rem));
+      --hero-glow: radial-gradient(circle at 18% 18%, rgba(160,63,104,.16), transparent 35%), radial-gradient(circle at 84% 10%, rgba(208,138,102,.14), transparent 30%), linear-gradient(180deg, rgba(255,255,255,.66), rgba(255,255,255,0));
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #140e12;
+      --color-surface: #1d151a;
+      --color-surface-2: #241b21;
+      --color-surface-offset: #2b2027;
+      --color-surface-dynamic: #33262f;
+      --color-border: rgba(255, 237, 236, 0.12);
+      --color-divider: rgba(255, 237, 236, 0.08);
+      --color-text: #f7e8e5;
+      --color-text-muted: #ceb2b0;
+      --color-text-faint: #8f7476;
+      --color-text-inverse: #1d151a;
+      --color-primary: #e684ab;
+      --color-primary-hover: #f1a0c0;
+      --color-primary-active: #f7bdd4;
+      --color-primary-soft: rgba(230, 132, 171, 0.13);
+      --color-secondary: #f0b087;
+      --shadow-sm: 0 2px 14px rgba(0,0,0,.18);
+      --shadow-md: 0 16px 38px rgba(0,0,0,.27);
+      --shadow-lg: 0 32px 88px rgba(0,0,0,.42);
+      --hero-glow: radial-gradient(circle at 18% 16%, rgba(230,132,171,.18), transparent 35%), radial-gradient(circle at 84% 10%, rgba(240,176,135,.14), transparent 30%), linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-bg) 86%, black 14%), var(--color-bg) 38%), var(--color-bg);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.05) 1px, transparent 0);
+      background-size: 28px 28px;
+      opacity: .2;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.8), transparent 85%);
+    }
+    img, svg { display: block; max-width: 100%; }
+    button, input, textarea, select { font: inherit; color: inherit; }
+    button { border: 0; cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 4px; }
+    ::selection { background: color-mix(in srgb, var(--color-primary) 28%, transparent); }
+
+    .skip-link { position: absolute; left: -9999px; top: auto; }
+    .skip-link:focus {
+      left: var(--space-4); top: var(--space-4); z-index: 1000;
+      background: var(--color-surface); padding: var(--space-3) var(--space-4); border-radius: var(--radius-full); box-shadow: var(--shadow-md);
+    }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 40;
+      backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--color-bg) 78%, transparent);
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .topbar-inner {
+      width: var(--content); margin: 0 auto; min-height: 4.8rem;
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+    }
+    .brand { display: inline-flex; align-items: center; gap: var(--space-3); }
+    .brand-mark {
+      width: 2.8rem; height: 2.8rem; padding: .48rem; border-radius: 1rem;
+      background: linear-gradient(145deg, color-mix(in srgb, var(--color-primary) 18%, var(--color-surface)), color-mix(in srgb, var(--color-secondary) 22%, var(--color-surface)));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.12), var(--shadow-sm);
+      color: var(--color-primary);
+    }
+    .brand-copy small {
+      display: block; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .22em; color: var(--color-text-faint);
+    }
+    .brand-copy strong {
+      display: block; font-size: var(--text-lg); font-weight: 600; font-family: var(--font-display); letter-spacing: .02em;
+    }
+    .topbar-actions { display: flex; align-items: center; gap: var(--space-3); }
+
+    .icon-button, .pill-button, .ghost-button, .primary-button {
+      min-height: 44px;
+      transition: transform var(--transition), background var(--transition), border-color var(--transition), color var(--transition), box-shadow var(--transition);
+    }
+    .icon-button {
+      width: 44px; border-radius: var(--radius-full); display: inline-grid; place-items: center;
+      background: var(--color-surface); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm);
+    }
+    .icon-button:hover, .pill-button:hover, .ghost-button:hover, .primary-button:hover { transform: translateY(-1px); }
+    .icon-button:active, .pill-button:active, .ghost-button:active, .primary-button:active { transform: translateY(1px) scale(.99); }
+
+    .app-shell { padding: var(--space-4) 0 var(--space-24); }
+    .layout {
+      width: var(--content); margin: var(--space-10) auto 0;
+      display: grid; grid-template-columns: 1.2fr .8fr; gap: var(--space-6); align-items: start;
+    }
+    .workspace, .sidebar-stack { display: grid; gap: var(--space-6); }
+    .panel {
+      background: color-mix(in srgb, var(--color-surface) 86%, transparent);
+      border: 1px solid var(--color-border); border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md); backdrop-filter: blur(12px);
+    }
+
+    .hero {
+      position: relative; overflow: hidden; min-height: 24rem;
+      padding: clamp(var(--space-8), 4vw, var(--space-12));
+      display: grid; align-content: space-between; gap: var(--space-8);
+      background: var(--hero-glow), linear-gradient(160deg, color-mix(in srgb, var(--color-surface-2) 92%, transparent), color-mix(in srgb, var(--color-surface-offset) 88%, transparent));
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: auto -4rem -4rem auto; width: 13rem; height: 13rem; border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 30%, transparent), transparent 70%);
+      filter: blur(20px); opacity: .9;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .55rem; width: fit-content;
+      padding: .55rem .9rem; font-size: var(--text-xs); letter-spacing: .18em; text-transform: uppercase;
+      border-radius: var(--radius-full); color: var(--color-primary); background: var(--color-primary-soft);
+      border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+    }
+    .hero h1 {
+      margin: 0; max-width: 11ch; font-family: var(--font-display); font-size: var(--text-hero);
+      line-height: .88; letter-spacing: -.03em; text-wrap: balance;
+    }
+    .hero p { margin: 0; max-width: 60ch; color: var(--color-text-muted); font-size: var(--text-lg); }
+    .hero-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+    .stat-card {
+      padding: var(--space-4); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-surface-2) 94%, transparent);
+      border: 1px solid var(--color-border); box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .stat-card span { display: block; font-size: var(--text-xs); letter-spacing: .15em; text-transform: uppercase; color: var(--color-text-faint); }
+    .stat-card strong { display: block; margin-top: .35rem; font-size: var(--text-xl); font-family: var(--font-display); }
+
+    .composer, .vault, .featured-card, .timeline-card { padding: var(--space-6); }
+    .section-head {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-4); margin-bottom: var(--space-5);
+    }
+    .section-head h2, .section-head h3 {
+      margin: 0; font-size: var(--text-xl); font-family: var(--font-display); line-height: 1;
+    }
+    .section-head p { margin: .4rem 0 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+    .actions-row { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+    .pill-button, .ghost-button, .primary-button {
+      border-radius: var(--radius-full); padding: .8rem 1.15rem; display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+      font-size: var(--text-sm); font-weight: 600;
+    }
+    .primary-button {
+      background: linear-gradient(135deg, var(--color-primary), color-mix(in srgb, var(--color-primary) 76%, var(--color-secondary)));
+      color: var(--color-text-inverse); box-shadow: 0 12px 30px color-mix(in srgb, var(--color-primary) 24%, transparent);
+    }
+    .ghost-button { background: transparent; color: var(--color-text); border: 1px solid var(--color-border); }
+    .pill-button { background: var(--color-surface-offset); color: var(--color-text); border: 1px solid var(--color-border); }
+
+    .form-grid { display: grid; gap: var(--space-4); }
+    .field { display: grid; gap: .55rem; }
+    .field label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .16em; color: var(--color-text-faint); }
+    .input, .textarea, .select {
+      width: 100%; border-radius: var(--radius-lg); border: 1px solid var(--color-border);
+      background: color-mix(in srgb, var(--color-surface-2) 95%, transparent); padding: .95rem 1rem; color: var(--color-text);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .textarea { min-height: 15rem; resize: vertical; font-family: var(--font-body); }
+    .input::placeholder, .textarea::placeholder { color: var(--color-text-faint); }
+    .input:focus, .textarea:focus, .select:focus {
+      outline: none; border-color: color-mix(in srgb, var(--color-primary) 44%, var(--color-border));
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 18%, transparent);
+    }
+    .editor-toolbar { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-2); }
+
+    .featured-card {
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent 40%), color-mix(in srgb, var(--color-surface) 92%, transparent);
+    }
+    .featured-card::after {
+      content: ""; position: absolute; inset: auto -2.5rem -2rem auto; width: 9rem; height: 9rem; border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--color-secondary) 28%, transparent), transparent 68%);
+      filter: blur(12px); opacity: .8;
+    }
+    .featured-meta {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-5);
+    }
+    .mini-badge {
+      display: inline-flex; align-items: center; gap: .45rem; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .15em;
+      border-radius: var(--radius-full); padding: .5rem .8rem; background: var(--color-primary-soft); color: var(--color-primary);
+    }
+    .featured-title {
+      margin: 0 0 .5rem; font-size: clamp(1.8rem, 1.2rem + 1.8vw, 2.9rem); line-height: .95; font-family: var(--font-display);
+    }
+    .featured-excerpt { margin: 0; color: var(--color-text-muted); max-width: 50ch; }
+
+    .vault-list { display: grid; gap: var(--space-3); }
+    .letter-item {
+      width: 100%; text-align: left; background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+      padding: var(--space-4); display: grid; gap: var(--space-2); box-shadow: var(--shadow-sm);
+    }
+    .letter-item:hover { border-color: color-mix(in srgb, var(--color-primary) 26%, var(--color-border)); }
+    .letter-item.active { background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface-2)); }
+    .letter-topline, .tag-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2); }
+    .letter-item h4 { margin: 0; font-size: var(--text-lg); font-family: var(--font-display); }
+    .letter-item p { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+    .tag {
+      display: inline-flex; align-items: center; gap: .35rem; padding: .38rem .68rem; border-radius: var(--radius-full);
+      background: var(--color-surface-offset); border: 1px solid var(--color-border); color: var(--color-text-muted);
+      font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .11em;
+    }
+    .empty-state {
+      padding: var(--space-8); border-radius: var(--radius-lg); text-align: center;
+      background: color-mix(in srgb, var(--color-surface-2) 90%, transparent);
+      border: 1px dashed color-mix(in srgb, var(--color-primary) 20%, var(--color-border)); color: var(--color-text-muted);
+    }
+    .empty-state strong {
+      display: block; margin-bottom: .5rem; color: var(--color-text); font-family: var(--font-display); font-size: var(--text-lg);
+    }
+
+    .timeline-list { display: grid; gap: var(--space-4); position: relative; padding-left: var(--space-4); }
+    .timeline-list::before {
+      content: ""; position: absolute; top: .4rem; bottom: .4rem; left: .42rem; width: 1px;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-primary) 24%, transparent), transparent);
+    }
+    .timeline-entry { position: relative; padding-left: var(--space-4); }
+    .timeline-entry::before {
+      content: ""; position: absolute; left: -.05rem; top: .42rem; width: .9rem; height: .9rem; border-radius: 50%;
+      background: var(--color-primary); box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-primary) 18%, transparent);
+    }
+    .timeline-entry h4 { margin: 0; font-size: var(--text-sm); text-transform: uppercase; letter-spacing: .14em; color: var(--color-text-faint); }
+    .timeline-entry p { margin: .25rem 0 0; color: var(--color-text-muted); }
+
+    .footer-note {
+      width: var(--content); margin: var(--space-8) auto 0; padding: 0 var(--space-1); color: var(--color-text-faint);
+      font-size: var(--text-sm); display: flex; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .featured-meta, .section-head { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 640px) {
+      .topbar-inner, .layout, .footer-note { width: min(100vw - 1rem, 100% - 1rem); }
+      .topbar-inner { min-height: auto; padding: .75rem 0; }
+      .brand-copy strong { font-size: 1.15rem; }
+      .hero { min-height: auto; }
+      .hero h1 { max-width: 8ch; }
+      .composer, .vault, .featured-card, .timeline-card { padding: var(--space-5); }
+      .actions-row { width: 100%; }
+      .pill-button, .ghost-button, .primary-button { flex: 1 1 auto; }
+      .topbar-actions .pill-button { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenu-principal">Aller au contenu</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" aria-label="Marque Coffret de lettres pour Alicia">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 22.5c0-6.9 5.6-12.5 12.5-12.5 4.4 0 7.9 1.8 10.1 5.1C34.8 11.8 38.3 10 42.7 10 49.6 10 55 15.6 55 22.5c0 8.3-6.4 14.6-14.2 20.9L32 50.4l-8.8-7C15.4 37.1 10 30.8 10 22.5Z"/>
+            <path d="M18 26.5 32 36l14-9.5" opacity=".88"/>
+            <path d="M18 26v18h28V26" opacity=".88"/>
+          </svg>
+        </div>
+        <div class="brand-copy">
+          <small>Archive intime</small>
+          <strong>Coffret de lettres pour Alicia</strong>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button class="pill-button" id="chargerExemples" type="button">Charger des lettres exemples</button>
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Changer le thème">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu-principal" class="app-shell">
+    <div class="layout">
+      <section class="workspace">
+        <section class="hero panel" aria-labelledby="titre-hero">
+          <div>
+            <span class="eyebrow">Pour Alicia, tendrement</span>
+            <h1 id="titre-hero">Écris tes mots d’amour comme s’ils méritaient leur propre écrin.</h1>
+          </div>
+          <p>Rédige, garde, relis et retrouve chaque lettre dans un espace pensé comme un souvenir précieux. L’atmosphère reste douce, intime et romantique, pendant que tes mots demeurent à portée de cœur.</p>
+          <div class="hero-grid" aria-label="Points forts">
+            <article class="stat-card">
+              <span>Conservation</span>
+              <strong>Privée et délicate</strong>
+            </article>
+            <article class="stat-card">
+              <span>Écriture</span>
+              <strong>Brouillons auto-sauvegardés</strong>
+            </article>
+            <article class="stat-card">
+              <span>Souvenirs</span>
+              <strong>Ambiances et favorites</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="composer panel" aria-labelledby="titre-redaction">
+          <div class="section-head">
+            <div>
+              <h2 id="titre-redaction">Écrire une lettre</h2>
+              <p>Commence une nouvelle déclaration, reprends une lettre ancienne ou laisse un brouillon pour une nuit plus inspirée.</p>
+            </div>
+            <div class="actions-row">
+              <button class="primary-button" id="boutonSauver" type="button">Sauvegarder la lettre</button>
+              <button class="ghost-button" id="boutonNouveau" type="button">Nouveau brouillon</button>
+            </div>
+          </div>
+          <form id="formulaireLettre" class="form-grid">
+            <div class="field">
+              <label for="titre">Titre de la lettre</label>
+              <input class="input" id="titre" type="text" maxlength="90" placeholder="Exemple : Le soir où j’ai su que c’était toi" required>
+            </div>
+            <div class="field">
+              <label for="ambiance">Ambiance</label>
+              <select class="select" id="ambiance">
+                <option value="Tendre">Tendre</option>
+                <option value="Reconnaissant">Reconnaissant</option>
+                <option value="Ludique">Ludique</option>
+                <option value="Romantique">Romantique</option>
+                <option value="Tard le soir">Tard le soir</option>
+                <option value="Anniversaire">Anniversaire</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Lettre</label>
+              <textarea class="textarea" id="message" placeholder="Écris à Alicia ici..."></textarea>
+            </div>
+            <div class="editor-toolbar" aria-label="Aides d’écriture">
+              <button class="ghost-button" type="button" data-insert="Mon Alicia,\n\n">Phrase d’ouverture</button>
+              <button class="ghost-button" type="button" data-insert="\n\nJe pense encore à ">Idée de souvenir</button>
+              <button class="ghost-button" type="button" data-insert="\n\nAvec tout mon amour,\n">Phrase de fin</button>
+              <button class="ghost-button" id="boutonFavorite" type="button">Marquer comme favorite</button>
+            </div>
+          </form>
+        </section>
+      </section>
+
+      <aside class="sidebar-stack">
+        <section class="featured-card panel" aria-labelledby="titre-vedette">
+          <div class="featured-meta">
+            <div>
+              <span class="mini-badge">Lettre en vedette</span>
+            </div>
+            <button class="ghost-button" id="boutonCopier" type="button">Copier le texte</button>
+          </div>
+          <h3 id="titre-vedette" class="featured-title">Aucune lettre sélectionnée pour le moment.</h3>
+          <p class="featured-excerpt" id="apercuVedette">Sauvegarde une lettre pour voir ici son aperçu, sa date et son ambiance dans une mise en lecture plus tendre.</p>
+          <div class="tag-row" style="margin-top: var(--space-5);">
+            <span class="tag" id="ambianceVedette">Ambiance : aucune</span>
+            <span class="tag" id="dateVedette">Pas encore sauvegardée</span>
+          </div>
+        </section>
+
+        <section class="vault panel" aria-labelledby="titre-coffret">
+          <div class="section-head">
+            <div>
+              <h3 id="titre-coffret">Ton coffret</h3>
+              <p>Les lettres sont gardées dans le navigateur avec un mode de secours si le stockage local n’est pas disponible.</p>
+            </div>
+            <div class="actions-row">
+              <button class="pill-button" id="boutonExporter" type="button">Exporter en JSON</button>
+              <button class="ghost-button" id="boutonEffacer" type="button">Tout effacer</button>
+            </div>
+          </div>
+          <div id="listeLettres" class="vault-list" aria-live="polite"></div>
+        </section>
+
+        <section class="timeline-card panel" aria-labelledby="titre-idees">
+          <div class="section-head">
+            <div>
+              <h3 id="titre-idees">Idées pour ta prochaine lettre</h3>
+              <p>Quelques élans doux pour t’aider à commencer quand les sentiments sont grands mais les premiers mots plus timides.</p>
+            </div>
+          </div>
+          <div class="timeline-list">
+            <article class="timeline-entry">
+              <h4>Souvenir discret</h4>
+              <p>Décris un petit moment avec Alicia qui paraissait simple, mais qui a laissé une grande trace en toi.</p>
+            </article>
+            <article class="timeline-entry">
+              <h4>Promesse de demain</h4>
+              <p>Écris une chose que tu rêves de construire, protéger ou célébrer avec elle dans le futur.</p>
+            </article>
+            <article class="timeline-entry">
+              <h4>Gratitude secrète</h4>
+              <p>Nommes un détail d’elle — une habitude, un regard, un rire, une phrase — qui rend tes journées plus lumineuses.</p>
+            </article>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <div class="footer-note">
+      <span>Conçu comme une seule page élégante, pour ouvrir ton coffret de n’importe où.</span>
+      <span>Astuce : utilise l’export JSON pour garder une copie de tes lettres les plus précieuses.</span>
+    </div>
+  </main>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const boutonTheme = document.querySelector('[data-theme-toggle]');
+      let themeActuel = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', themeActuel);
+
+      const mettreAJourIconeTheme = () => {
+        boutonTheme.innerHTML = themeActuel === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        boutonTheme.setAttribute('aria-label', themeActuel === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre');
+      };
+      mettreAJourIconeTheme();
+      boutonTheme.addEventListener('click', () => {
+        themeActuel = themeActuel === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', themeActuel);
+        mettreAJourIconeTheme();
+      });
+
+      const cleStockage = 'coffret-lettres-alicia-fr';
+      let memoireTemporaire = [];
+      const stockageDisponible = (() => {
+        try {
+          const test = '__test_alicia__';
+          localStorage.setItem(test, 'ok');
+          localStorage.removeItem(test);
+          return true;
+        } catch {
+          return false;
+        }
+      })();
+
+      const lireLettres = () => {
+        try {
+          return stockageDisponible ? JSON.parse(localStorage.getItem(cleStockage) || '[]') : memoireTemporaire;
+        } catch {
+          return memoireTemporaire;
+        }
+      };
+      const sauverLettres = (lettres) => {
+        if (stockageDisponible) {
+          localStorage.setItem(cleStockage, JSON.stringify(lettres));
+        } else {
+          memoireTemporaire = lettres;
+        }
+      };
+      const effacerLettres = () => {
+        if (stockageDisponible) {
+          localStorage.removeItem(cleStockage);
+        }
+        memoireTemporaire = [];
+      };
+
+      const formulaire = document.getElementById('formulaireLettre');
+      const champTitre = document.getElementById('titre');
+      const champAmbiance = document.getElementById('ambiance');
+      const champMessage = document.getElementById('message');
+      const boutonSauver = document.getElementById('boutonSauver');
+      const boutonNouveau = document.getElementById('boutonNouveau');
+      const boutonExporter = document.getElementById('boutonExporter');
+      const boutonEffacer = document.getElementById('boutonEffacer');
+      const boutonFavorite = document.getElementById('boutonFavorite');
+      const boutonCopier = document.getElementById('boutonCopier');
+      const boutonExemples = document.getElementById('chargerExemples');
+      const listeLettres = document.getElementById('listeLettres');
+      const titreVedette = document.getElementById('titre-vedette');
+      const apercuVedette = document.getElementById('apercuVedette');
+      const ambianceVedette = document.getElementById('ambianceVedette');
+      const dateVedette = document.getElementById('dateVedette');
+
+      let idActuel = null;
+      let estFavorite = false;
+
+      const lettresExemples = [
+        {
+          id: crypto.randomUUID(),
+          title: 'Pour les nuits qui deviennent plus douces avec toi',
+          mood: 'Tard le soir',
+          favorite: true,
+          createdAt: new Date().toISOString(),
+          message: 'Mon Alicia,\n\nIl y a quelque chose dans le calme après une longue journée qui me ramène toujours vers toi. Même le silence semble plus chaud quand je t’imagine près de moi.\n\nTu as cette façon rare de rendre les heures ordinaires inoubliables.'
+        },
+        {
+          id: crypto.randomUUID(),
+          title: 'Les détails que mon cœur remarque',
+          mood: 'Tendre',
+          favorite: false,
+          createdAt: new Date(Date.now() - 86400000 * 4).toISOString(),
+          message: 'Je pense souvent aux détails qui n’appartiennent qu’à toi : la façon dont ton sourire arrive avant ton rire, la douceur de tes mots, et la manière dont ta présence rend tout plus léger autour de moi.'
+        }
+      ];
+
+      const formaterDate = (valeur) => new Date(valeur).toLocaleDateString('fr-CA', {
+        year: 'numeric', month: 'short', day: 'numeric'
+      });
+
+      const extrait = (texte) => {
+        const propre = texte.trim().replace(/\s+/g, ' ');
+        return propre.slice(0, 150) + (propre.length > 150 ? '…' : '');
+      };
+
+      const mettreAJourFavorite = () => {
+        boutonFavorite.textContent = estFavorite ? 'Déjà favorite' : 'Marquer comme favorite';
+      };
+
+      const afficherVedette = (lettre) => {
+        if (!lettre) {
+          titreVedette.textContent = 'Aucune lettre sélectionnée pour le moment.';
+          apercuVedette.textContent = 'Sauvegarde une lettre pour voir ici son aperçu, sa date et son ambiance dans une mise en lecture plus tendre.';
+          ambianceVedette.textContent = 'Ambiance : aucune';
+          dateVedette.textContent = 'Pas encore sauvegardée';
+          return;
+        }
+        titreVedette.textContent = lettre.title;
+        apercuVedette.textContent = lettre.message ? extrait(lettre.message) : 'Cette lettre attend encore ses mots.';
+        ambianceVedette.textContent = `Ambiance : ${lettre.mood}`;
+        dateVedette.textContent = `Sauvegardée le ${formaterDate(lettre.createdAt)}`;
+      };
+
+      const chargerDansLeFormulaire = (lettre) => {
+        idActuel = lettre.id;
+        champTitre.value = lettre.title;
+        champAmbiance.value = lettre.mood;
+        champMessage.value = lettre.message;
+        estFavorite = !!lettre.favorite;
+        mettreAJourFavorite();
+        afficherVedette(lettre);
+        document.querySelectorAll('.letter-item').forEach((element) => {
+          element.classList.toggle('active', element.dataset.id === lettre.id);
+        });
+      };
+
+      const nouveauBrouillon = () => {
+        formulaire.reset();
+        idActuel = null;
+        estFavorite = false;
+        mettreAJourFavorite();
+        document.querySelectorAll('.letter-item').forEach((element) => element.classList.remove('active'));
+        afficherVedette(null);
+        champTitre.focus();
+      };
+
+      const rendreListe = () => {
+        const lettres = lireLettres().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        listeLettres.innerHTML = '';
+
+        if (!lettres.length) {
+          listeLettres.innerHTML = '<div class="empty-state"><strong>Ton coffret est encore vide.</strong>Écris ta première lettre pour Alicia et elle apparaîtra ici avec sa date, son ambiance et son aperçu.</div>';
+          afficherVedette(null);
+          return;
+        }
+
+        lettres.forEach((lettre) => {
+          const bouton = document.createElement('button');
+          bouton.type = 'button';
+          bouton.className = 'letter-item';
+          bouton.dataset.id = lettre.id;
+          bouton.innerHTML = `
+            <div class="letter-topline">
+              <h4>${lettre.title}</h4>
+              <span class="tag">${formaterDate(lettre.createdAt)}</span>
+            </div>
+            <p>${extrait(lettre.message || '') || 'Un titre sauvegardé qui attend encore sa lettre complète.'}</p>
+            <div class="tag-row">
+              <span class="tag">${lettre.mood}</span>
+              <span class="tag">${lettre.favorite ? 'Favorite' : 'Sauvegardée'}</span>
+            </div>
+          `;
+          bouton.addEventListener('click', () => chargerDansLeFormulaire(lettre));
+          listeLettres.appendChild(bouton);
+        });
+
+        const active = lettres.find((lettre) => lettre.id === idActuel) || lettres[0];
+        chargerDansLeFormulaire(active);
+      };
+
+      const sauverLettre = () => {
+        if (!champTitre.value.trim()) {
+          champTitre.focus();
+          return;
+        }
+
+        const lettres = lireLettres();
+        const lettre = {
+          id: idActuel || crypto.randomUUID(),
+          title: champTitre.value.trim(),
+          mood: champAmbiance.value,
+          message: champMessage.value.trim(),
+          favorite: estFavorite,
+          createdAt: idActuel ? (lettres.find((item) => item.id === idActuel)?.createdAt || new Date().toISOString()) : new Date().toISOString()
+        };
+
+        const index = lettres.findIndex((item) => item.id === lettre.id);
+        if (index >= 0) lettres[index] = lettre; else lettres.push(lettre);
+        sauverLettres(lettres);
+        idActuel = lettre.id;
+        rendreListe();
+        boutonSauver.textContent = 'Lettre sauvegardée';
+        setTimeout(() => { boutonSauver.textContent = 'Sauvegarder la lettre'; }, 1200);
+      };
+
+      const exporterLettres = () => {
+        const blob = new Blob([JSON.stringify(lireLettres(), null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const lien = document.createElement('a');
+        lien.href = url;
+        lien.download = 'coffret-lettres-alicia.json';
+        lien.click();
+        URL.revokeObjectURL(url);
+      };
+
+      const copierTexte = async () => {
+        if (!champMessage.value.trim()) return;
+        try {
+          await navigator.clipboard.writeText(champMessage.value.trim());
+          boutonCopier.textContent = 'Texte copié';
+          setTimeout(() => { boutonCopier.textContent = 'Copier le texte'; }, 1200);
+        } catch {
+          boutonCopier.textContent = 'Copie manuelle nécessaire';
+          setTimeout(() => { boutonCopier.textContent = 'Copier le texte'; }, 1500);
+        }
+      };
+
+      formulaire.addEventListener('submit', (event) => {
+        event.preventDefault();
+        sauverLettre();
+      });
+      boutonSauver.addEventListener('click', sauverLettre);
+      boutonNouveau.addEventListener('click', nouveauBrouillon);
+      boutonFavorite.addEventListener('click', () => {
+        estFavorite = !estFavorite;
+        mettreAJourFavorite();
+      });
+      boutonExporter.addEventListener('click', exporterLettres);
+      boutonCopier.addEventListener('click', copierTexte);
+      boutonEffacer.addEventListener('click', () => {
+        if (!confirm('Effacer toutes les lettres de ce coffret ?')) return;
+        effacerLettres();
+        nouveauBrouillon();
+        rendreListe();
+      });
+      boutonExemples.addEventListener('click', () => {
+        const presentes = lireLettres();
+        if (presentes.length && !confirm('Remplacer les lettres actuelles par des exemples romantiques ?')) return;
+        sauverLettres(lettresExemples);
+        idActuel = null;
+        rendreListe();
+      });
+
+      document.querySelectorAll('[data-insert]').forEach((bouton) => {
+        bouton.addEventListener('click', () => {
+          const snippet = bouton.getAttribute('data-insert');
+          const debut = champMessage.selectionStart;
+          const fin = champMessage.selectionEnd;
+          const texte = champMessage.value;
+          champMessage.value = texte.slice(0, debut) + snippet + texte.slice(fin);
+          const position = debut + snippet.length;
+          champMessage.focus();
+          champMessage.setSelectionRange(position, position);
+        });
+      });
+
+      let minuterieBrouillon;
+      const autosauvegarde = () => {
+        clearTimeout(minuterieBrouillon);
+        minuterieBrouillon = setTimeout(() => {
+          if (champTitre.value.trim() || champMessage.value.trim()) sauverLettre();
+        }, 1300);
+      };
+
+      champTitre.addEventListener('input', autosauvegarde);
+      champAmbiance.addEventListener('change', autosauvegarde);
+      champMessage.addEventListener('input', autosauvegarde);
+
+      mettreAJourFavorite();
+      rendreListe();
+    })();
+  </script>
+</body>
+</html>
